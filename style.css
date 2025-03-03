@@ -1,0 +1,88 @@
+body {
+    background-color: #d7af10;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  /* Container for the custom slider */
+  .slider-container {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    height: 6px;
+    background: lightgray;
+    margin: 122px auto 0;
+    border-radius: 5px;
+    overflow: visible;
+  }
+  
+  /* Slider Track that shows progress (fill) */
+  .slider-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 6px;
+    background: orange;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.7s ease-in-out;
+  }
+  
+  /* Custom Slider Thumb */
+  .slider-thumb {
+    position: absolute;
+    top: -12px; /* Centers the thumb vertically over the track */
+    /* left: 0%; */
+    width: 12px;
+    height: 30px;
+    background: #111;
+    border-radius: 50%;
+    transition: left 0.7s ease-in-out;
+  }
+  
+  /* Price Tag that moves with the thumb */
+  .show-value {
+    position: absolute;
+    top: -40px;
+    /* left: 0%; */
+    transition: left 0.7s ease-in-out;
+  }
+  
+  #current-value {
+    background: white;
+    color: black;
+    padding: 5px 12px;
+    border-radius: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    border: 2px solid orange;
+    display: inline-block;
+    text-align: center;
+    height: 35px;
+    width: 35px;
+  }
+  
+  /* Range Labels / Buttons */
+  .range-labels {
+    display: flex;
+    justify-content:center;
+    margin-top: 15px;
+  }
+  
+  .range-btn {
+    padding: 4px 2px;
+    border: 2px solid white;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .range-btn:hover {
+    background-color: white;
+    color: black;
+  }
+  
