@@ -5,28 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Potta+One&family=Rubik+Iso&family=Yellowtail&family=Zen+Dots&family=Zeyada&family=Zilla+Slab+Highlight:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="center">
-        <h2>Price Slider</h2>
-        <div class="slider-container">
-          <!-- Slider Track (background) -->
-          <div class="slider-track"></div>
-          <!-- Custom Slider Thumb -->
-          <div class="slider-thumb" id="sliderThumb"></div>
-          <!-- Price Tag -->
-          <div class="show-value" id="priceBubble">
-            <span id="current-value">0</span>
-          </div>
-        </div>
-        <div class="range-labels">
-          <button class="range-btn" data-value="0">1</button>
-          <button class="range-btn" data-value="25000">2</button>
-          <button class="range-btn" data-value="50000">3</button>
-        </div>
+  <div class="center">
+    <h2>Price slider</h2>
+    <div class="main">
+    <div class="slider-container">
+      <!-- Price Labels (Initially Hidden) -->
+      <div class="slider-labels">
+        <span class="price-tag min" id="min-label">0</span>
+        <span class="price-tag mid" id="mid-label">25,000</span>
+        <span class="price-tag max" id="max-label">50,000<span class="plus-sign">+</span></span>
       </div>
-      
+  
+      <!-- Slider Track -->
+      <div class="slider-track"></div>
+  
+      <!-- Slider Thumb -->
+      <div class="slider-thumb" id="sliderThumb"></div>
+  
+      <!-- Moving Circle -->
+      <div class="moving-circle" id="movingCircle"></div>
+    </div>
+  
+    <div class="range-labels">
+      <button class="range-btn fst" data-value="0">1</button>
+      <button class="range-btn snd" data-value="25000">2</button>
+      <button class="range-btn trd" data-value="50000">3</button>
+    </div>
+  </div>
+
+
+   <div class="input-box">
+    <form action=""> <input type="text" placeholder="min price" class="min-input"></form>
+    <div class="dash"></div>
+    <form action=""> <input type="text" placeholder="max-price" class="max-output"></form>
+    <div class="tick-box"><img src="tick mark 1 (4).png" alt=""></div>
+   </div>
+  </div>
+  
 
    <script src="app.js"></script> 
 </body>

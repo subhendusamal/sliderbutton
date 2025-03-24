@@ -1,40 +1,52 @@
 const sliderThumb = document.getElementById("sliderThumb");
-const priceBubble = document.getElementById("priceBubble");
-const currentValue = document.getElementById("current-value");
+const movingCircle = document.getElementById("movingCircle");
 const sliderTrack = document.querySelector(".slider-track");
 const buttons = document.querySelectorAll(".range-btn");
 
-// Define your min and max values
+// Price Tags
+const minLabel = document.getElementById("min-label");
+const midLabel = document.getElementById("mid-label");
+const maxLabel = document.getElementById("max-label");
+const plusSign = document.querySelector(".plus-sign"); // Select the "+" sign
+
+// Min, mid, and max values
 const MIN = 0;
+const MID = 25000;
 const MAX = 50000;
 
 /**
- * Update the custom slider thumb, track fill, and price tag position.
+ * Update the slider thumb, track fill, moving circle, and label visibility.
  * @param {number} value - The target value for the slider.
  */
 function updateSlider(value) {
-  // Calculate the percentage position
   let percentage = ((value - MIN) / (MAX - MIN)) * 100;
 
-  // Update the slider track width (the orange fill)
+  // Update slider track width
   sliderTrack.style.width = `${percentage}%`;
 
-  // Move the slider thumb. We subtract half the thumb's width (≈6px)
-  sliderThumb.style.left = `calc(${percentage}% - 6px)`;
+  // Move the slider thumb
+  sliderThumb.style.left = `${percentage}%`;
+  sliderThumb.style.transform = `translateX(-50%)`;
 
-  // Move the price tag similarly. Adjust the offset as needed.
-  priceBubble.style.left = `calc(${percentage}% - 20px)`;
+  // Move the circle along with the thumb
+  movingCircle.style.left = `${percentage}%`;
+  movingCircle.style.transform = `translateX(-50%)`;
 
-  // Update the displayed value in the price tag
-  currentValue.innerHTML = value === MAX ? `${value.toLocaleString()}<br>+` : value.toLocaleString();
+  // Show or hide labels based on position
+  minLabel.style.opacity = value === MIN ? "1" : "0";
+  midLabel.style.opacity = value === MID ? "1" : "0";
+  maxLabel.style.opacity = value === MAX ? "1" : "0";
+  
+  // Show "+" only when max price is visible
+  plusSign.style.opacity = value === MAX ? "1" : "0";
 }
 
-// Set the initial position without transition (if needed)
+// Initialize slider
 window.onload = function () {
   updateSlider(MIN);
 };
 
-// Add event listeners to buttons for smooth transitions
+// Add event listeners for buttons
 buttons.forEach(button => {
   button.addEventListener("click", function () {
     let value = parseInt(this.getAttribute("data-value"));

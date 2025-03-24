@@ -1,88 +1,218 @@
-body {
-    background-color: #d7af10;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
+.center{
+   position: absolute;
+  top: 210px;
+  left: 15px;
+   
+  border-radius: 28px;
+  border: 1px solid #FFF;
+  background: #000; 
+   height: 217px; 
+  width: 330px; 
   
-  /* Container for the custom slider */
-  .slider-container {
-    position: relative;
-    width: 80%;
-    max-width: 400px;
-    height: 6px;
-    background: lightgray;
-    margin: 122px auto 0;
-    border-radius: 5px;
-    overflow: visible;
-  }
   
-  /* Slider Track that shows progress (fill) */
-  .slider-track {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 6px;
-    background: orange;
-    width: 0%;
-    border-radius: 5px;
-    transition: width 0.7s ease-in-out;
-  }
+}
+.main{
+  position: absolute;
+  top: -27px;
+  left: -21px;
+}
+.center h2{
+  color: #FFF;
+font-family: Poppins;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+position: absolute;
+top: -3px;
+left: 20px;
+}
+
+.slider-container {
+  position: absolute;
+  top: 105.5px;
+  left: 51px;
+  width: 272px;
+  height: 12px;
+  background: #ddd;
+  border-radius: 3px;
+  margin: 20px auto;
+}
+
+.slider-track {
+  position: absolute;
   
-  /* Custom Slider Thumb */
-  .slider-thumb {
-    position: absolute;
-    top: -12px; /* Centers the thumb vertically over the track */
-    /* left: 0%; */
-    width: 12px;
-    height: 30px;
-    background: #111;
-    border-radius: 50%;
-    transition: left 0.7s ease-in-out;
-  }
+  height: 12px;
+  background: orange;
   
-  /* Price Tag that moves with the thumb */
-  .show-value {
-    position: absolute;
-    top: -40px;
-    /* left: 0%; */
-    transition: left 0.7s ease-in-out;
-  }
+  border-radius: 3px;
+  transition: width 0.3s ease-in-out;
+}
+
+.slider-thumb {
+  position: absolute;
+  top: -10px;
+  width: 1.5px;
+  height:35px;
+  background: #655585;
   
-  #current-value {
-    background: white;
-    color: black;
-    padding: 5px 12px;
-    border-radius: 100%;
-    font-size: 14px;
-    font-weight: bold;
-    border: 2px solid orange;
-    display: inline-block;
-    text-align: center;
-    height: 35px;
-    width: 35px;
-  }
+  transition: left 0.3s ease-in-out;
+}
+
+/* Moving Circle */
+.moving-circle {
+  position: absolute;
+  top: -55px; /* Adjust height above the thumb */
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid orange ;
+  transition: left 0.3s ease-in-out;
+  z-index: 1;
+}
+
+/* Price Labels */
+.slider-labels {
+  position: absolute;
   
-  /* Range Labels / Buttons */
-  .range-labels {
-    display: flex;
-    justify-content:center;
-    margin-top: 15px;
-  }
+  top: -40px; /* Adjust spacing */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-tag {
+  font-family: poppins;
+  font-size: 10px;
+  font-weight: 500;
+  color: black;
+  opacity: 0;  /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+.range-labels{
+  position: absolute;
+  top: 70px;
+  left: -560px;
+}
+
+.range-btn{
+  border-radius: 100%;
+  background: #000;
+  border: 1px solid white;
+  height: 16px;
+  width: 16px;
+}
+.fst{
+  position: absolute;
+  top: 54px;
+  left: 601px;
+}
+.snd{
+  position: absolute;
+  top: 55px;
+  left: 737px;
+  height: 15px;
+  width: 15px;
+}
+.trd{
+  position: absolute;
+  top: 54px;
+  left: 872.5px;
+
+}
+
+.min{
+  position: absolute;
+  top: 0px;
+  left: -4px;
+  z-index: 2;
   
-  .range-btn {
-    padding: 4px 2px;
-    border: 2px solid white;
-    background-color: black;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .range-btn:hover {
-    background-color: white;
-    color: black;
-  }
-  
+}
+.mid{
+  position: absolute;
+  top: 0px;
+  left: 118.4px;
+  z-index: 2;
+}
+.max{
+  position: absolute;
+  top: 0px;
+  left: 255px;
+  z-index: 2;
+}
+
+/* "+" sign hidden by default */
+.plus-sign {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: poppins;
+  font-size: 11px;
+  color: black;
+  opacity: 0; /* Hidden initially */
+  margin-left: 3px;
+  font-weight: 500;
+}
+
+.input-box{
+  display: flex;
+  position: absolute;
+  top: 140px;
+  left: -10px;
+}
+.input-box input ::target-text{
+  /* color: #000;
+font-family: Poppins;
+font-size: 10px;
+font-style: normal;
+font-weight: 300;
+line-height: normal; */
+/* margin-left: 30px; */
+
+}
+.min-input{
+  position: absolute;
+  left: 30px;
+  width: 131px;
+  height: 22px;
+  border-radius: 30px;
+border: 1px solid #FFF;
+background: #000;
+/* color: #FFF; */
+
+}
+.max-output{
+  position: absolute;
+  left: 183px;
+  width: 131px;
+  height: 22px;
+  border-radius: 30px;
+border: 1px solid #FFF;
+background: #000;
+}
+.dash{
+  width: 5px;
+  height: 2px;
+  background: #FFF;
+  position: absolute;
+  left: 172px;
+  top: 12px;
+}
+.tick-box{
+  position: absolute;top: 40px;
+  left: 162px;
+  top: 37px;
+
+}
+.tick-box img{
+  /* display: flex; */
+width: 26px;
+height: 26px;
+justify-content: center;
+align-items: center;
+
+
+}
