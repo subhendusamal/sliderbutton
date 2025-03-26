@@ -163,42 +163,54 @@ left: 20px;
   top: 140px;
   left: -10px;
 }
-.input-box input ::target-text{
-  /* color: #000;
-font-family: Poppins;
-font-size: 10px;
-font-style: normal;
-font-weight: 300;
-line-height: normal; */
-/* margin-left: 30px; */
-
-}
 .min-input{
   position: absolute;
-  left: 30px;
-  width: 131px;
+  left: 27px;
+  width: 130px;
   height: 22px;
   border-radius: 30px;
 border: 1px solid #FFF;
 background: #000;
-/* color: #FFF; */
+color: #FFF;
+padding-left: 10px;
 
 }
-.max-output{
+.min-input::placeholder{
+
+
+  color: #FFF;
+font-family: Poppins;
+font-size: 9px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+.max-output {
   position: absolute;
   left: 183px;
-  width: 131px;
+  width: 130px;
   height: 22px;
   border-radius: 30px;
 border: 1px solid #FFF;
 background: #000;
+color: #fff;
+padding-left: 10px;
+}
+
+.max-output::placeholder{
+  color: #FFF;
+font-family: Poppins;
+font-size: 9px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
 }
 .dash{
   width: 5px;
   height: 2px;
   background: #FFF;
   position: absolute;
-  left: 172px;
+  left: 175px;
   top: 12px;
 }
 .tick-box{
