@@ -1,14 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
 const sliderThumb = document.getElementById("sliderThumb");
 const movingCircle = document.getElementById("movingCircle");
 const sliderTrack = document.querySelector(".slider-track");
