@@ -1,146 +1,99 @@
 
-const sliderThumb = document.getElementById("sliderThumb");
-const movingCircle = document.getElementById("movingCircle");
-const sliderTrack = document.querySelector(".slider-track");
-const buttons = document.querySelectorAll(".range-btn");
 
-// Price Labels
-const minLabel = document.getElementById("min-label");
-const midLabel = document.getElementById("mid-label");
-const maxLabel = document.getElementById("max-label");
-const plusSign = document.querySelector(".plus-sign");
-
-// Input Fields
-const minInput = document.querySelector(".min-input");
-const maxInput = document.querySelector(".max-output");
-
-// Min, Mid, and Max Values
-const MIN = 0;
-const MID = 25000;
-const MAX = 50000;
-
-/**
- * Update the slider thumb, track fill, moving circle, and label visibility.
- * @param {number} value - The target value for the slider.
- */
-function updateSlider(value) {
-  let percentage = ((value - MIN) / (MAX - MIN)) * 100;
-
-  // Update slider track width
-  sliderTrack.style.width = `${percentage}%`;
-
-  // Move the slider thumb
-  sliderThumb.style.left = `${percentage}%`;
-  sliderThumb.style.transform = `translateX(-50%)`;
-
-  // Move the moving circle
-  movingCircle.style.left = `${percentage}%`;
-  movingCircle.style.transform = `translateX(-50%)`;
-
-  // Show or hide labels based on position
-  minLabel.style.opacity = value === MIN ? "1" : "0";
-  midLabel.style.opacity = value === MID ? "1" : "0";
-  maxLabel.style.opacity = value === MAX ? "1" : "0";
-
-  // Show "+" sign only when max price is reached
-  plusSign.style.opacity = value === MAX ? "1" : "0";
-
-  // Enable input fields when slider value is 0, otherwise disable them
-  if (value === MIN) {
-    enableInputs();
-  } else {
-    disableInputs();
-  }
-}
-
-// Disable input fields
-function disableInputs() {
-  minInput.disabled = true;
-  maxInput.disabled = true;
-}
-
-// Enable input fields
-function enableInputs() {
-  minInput.disabled = false;
-  maxInput.disabled = false;
-}
-
-// Enable the slider buttons
-function enableSliderButtons() {
-  buttons.forEach(button => {
-    button.disabled = false;
-  });
-}
-
-// Disable the slider buttons
-function disableSliderButtons() {
-  buttons.forEach(button => {
-    button.disabled = true;
-  });
-}
-
-// Initialize slider
-window.onload = function () {
-  updateSlider(MIN);
-};
-
-// Add event listeners for slider buttons
-buttons.forEach(button => {
-  button.addEventListener("click", function () {
-    let value = parseInt(this.getAttribute("data-value"));
-    updateSlider(value);
-
-    // If the slider is set to 0, allow input
-    if (value !== MIN) {
-      disableInputs();
+document.addEventListener("DOMContentLoaded", function () {
+    const sliderThumb = document.getElementById("sliderThumb");
+    const movingCircle = document.getElementById("movingCircle");
+    const sliderTrack = document.querySelector(".slider-track");
+    const sliderLabels = document.querySelectorAll(".price-tag");
+    const rangeButtons = document.querySelectorAll(".range-btn");
+    const minInput = document.querySelector(".min-input");
+    const maxInput = document.querySelector(".max-input");
+    const clearButton = document.getElementById("clearButton");
+  
+    let sliderActive = false;
+    let inputActive = false;
+  
+    // Function to reset both the slider and input fields
+    function resetAll() {
+        sliderThumb.style.left = "0%";
+        movingCircle.style.left = "0%";
+        // movingCircle.textContent = "0";
+        sliderTrack.style.width = "0%";
+        sliderLabels.forEach(label => label.classList.remove("active"));
+        document.getElementById("min-label").classList.add("active");
+  
+        minInput.value = "";
+        maxInput.value = "";
+  
+        sliderActive = false;
+        inputActive = false;
     }
-  });
-});
-
-// Add event listeners to the input boxes to disable slider buttons when typing
-[minInput, maxInput].forEach(input => {
-  input.addEventListener("input", function () {
-    disableSliderButtons(); // Disable slider buttons when input is used
-  });
-});
-
-// Add event listeners to re-enable slider buttons when input boxes are cleared
-[minInput, maxInput].forEach(input => {
-  input.addEventListener("blur", function () {
-    if (minInput.value.trim() === "" && maxInput.value.trim() === "") {
-      enableSliderButtons(); // Enable slider buttons again if both inputs are empty
+  
+    // Function to update slider
+    function updateSlider(value) {
+        let percentage = (value / 50000) * 100;
+        sliderThumb.style.left = percentage + "%";
+        movingCircle.style.left = percentage + "%";
+        sliderTrack.style.width = percentage + "%";
+        // movingCircle.textContent = value.toLocaleString();
     }
+  
+    // Slider Functionality
+    rangeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            if (inputActive) return;
+  
+            sliderActive = true;
+            minInput.value = "";
+            maxInput.value = "";
+  
+            let value = parseInt(this.getAttribute("data-value"));
+            updateSlider(value);
+  
+            sliderLabels.forEach(label => label.classList.remove("active"));
+            if (value === 0) document.getElementById("min-label").classList.add("active");
+            else if (value === 25000) document.getElementById("mid-label").classList.add("active");
+            else if (value === 50000) document.getElementById("max-label").classList.add("active");
+        });
+    });
+  
+    // Min/Max Input Functionality
+    minInput.addEventListener("click", function () {
+        if (!inputActive) {
+            resetSlider(); // Reset only slider, not input fields
+        }
+        inputActive = true;
+    });
+  
+    maxInput.addEventListener("click", function () {
+        if (!inputActive) {
+            resetSlider(); // Reset only slider, not input fields
+        }
+        inputActive = true;
+    });
+  
+    function resetSlider() {
+        sliderThumb.style.left = "0%";
+        movingCircle.style.left = "0%";
+        // movingCircle.textContent = "0";
+        sliderTrack.style.width = "0%";
+        sliderLabels.forEach(label => label.classList.remove("active"));
+        document.getElementById("min-label").classList.add("active");
+        sliderActive = false;
+    }
+  
+    // Detect when user leaves input fields and allow slider again
+    function resetInputFocus() {
+        inputActive = false;
+    }
+  
+    minInput.addEventListener("blur", resetInputFocus);
+    maxInput.addEventListener("blur", resetInputFocus);
+  
+    // Clear button functionality
+    clearButton.addEventListener("click", resetAll);
+  
+    // Ensure everything resets to minimum value on page load
+    resetAll();
   });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  

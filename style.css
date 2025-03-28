@@ -3,12 +3,11 @@
   top: 210px;
   left: 15px;
    
-  border-radius: 28px;
+  border-radius: 25px;
   border: 1px solid #FFF;
   background: #000; 
    height: 217px; 
   width: 330px; 
-  
   
 }
 .main{
@@ -19,20 +18,20 @@
 .center h2{
   color: #FFF;
 font-family: Poppins;
-font-size: 20px;
+font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 position: absolute;
-top: -3px;
-left: 20px;
+top: 3px;
+left: 21px;
 }
 
 .slider-container {
   position: absolute;
   top: 105.5px;
   left: 51px;
-  width: 272px;
+  width: 274px;
   height: 12px;
   background: #ddd;
   border-radius: 3px;
@@ -52,6 +51,7 @@ left: 20px;
 .slider-thumb {
   position: absolute;
   top: -10px;
+  margin-left: -2px;
   width: 1.5px;
   height:35px;
   background: #655585;
@@ -61,12 +61,13 @@ left: 20px;
 
 /* Moving Circle */
 .moving-circle {
+  margin-left: -20px;
   position: absolute;
-  top: -55px; /* Adjust height above the thumb */
-  width: 40px;
-  height: 40px;
+  top: -50px; 
+  width: 37px;
+  height: 37px;
   background: #fff;
-  border-radius: 50%;
+  border-radius: 49%;
   border: 1px solid orange ;
   transition: left 0.3s ease-in-out;
   z-index: 1;
@@ -76,7 +77,7 @@ left: 20px;
 .slider-labels {
   position: absolute;
   
-  top: -40px; /* Adjust spacing */
+  top: -37px; /* Adjust spacing */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +88,7 @@ left: 20px;
   font-size: 10px;
   font-weight: 500;
   color: black;
-  opacity: 0;  /* Hidden by default */
+  opacity: 1;  /* Hidden by default */
   transition: opacity 0.3s ease-in-out;
 }
 
@@ -113,18 +114,19 @@ left: 20px;
 .snd{
   position: absolute;
   top: 55px;
-  left: 737px;
+  left: 738px;
   height: 15px;
   width: 15px;
 }
 .trd{
   position: absolute;
   top: 54px;
-  left: 872.5px;
+  left: 874.5px;
 
 }
 
 .min{
+ 
   position: absolute;
   top: 0px;
   left: -4px;
@@ -132,27 +134,29 @@ left: 20px;
   
 }
 .mid{
+  
   position: absolute;
   top: 0px;
-  left: 118.4px;
+  left: 119.4px;
   z-index: 2;
+ 
 }
 .max{
   position: absolute;
   top: 0px;
-  left: 255px;
+  left: 257px;
   z-index: 2;
 }
 
 /* "+" sign hidden by default */
 .plus-sign {
   position: absolute;
-  top: 10px;
+  top: 9.5px;
   left: 10px;
   font-family: poppins;
   font-size: 11px;
   color: black;
-  opacity: 0; /* Hidden initially */
+  opacity: 1; /* Hidden initially */
   margin-left: 3px;
   font-weight: 500;
 }
@@ -163,67 +167,107 @@ left: 20px;
   top: 140px;
   left: -10px;
 }
-.min-input{
-  position: absolute;
-  left: 27px;
-  width: 130px;
-  height: 22px;
-  border-radius: 30px;
-border: 1px solid #FFF;
-background: #000;
-color: #FFF;
-padding-left: 10px;
 
-}
-.min-input::placeholder{
+.input-box input::placeholder {
+  color: #fff;
+  
+  font-family: Poppins;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 
-
-  color: #FFF;
-font-family: Poppins;
-font-size: 9px;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-}
-.max-output {
+  
+  
+  }
+  .input-box input{
+   
+    background: #000;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 300;
+    color: #FFF;
+    line-height: normal;
+    height: 22px;
+    width: 124px;
+    border-radius: 28px;
+  border: 1px solid #FFF;
+  padding-left: 10px;
+  }
+  .min-input{
+    
+position: absolute;
+left: 30.5px;
+  }
+  .max-input{
+   
   position: absolute;
   left: 183px;
-  width: 130px;
-  height: 22px;
-  border-radius: 30px;
-border: 1px solid #FFF;
-background: #000;
-color: #fff;
-padding-left: 10px;
+  }
+  .inp1:hover::placeholder
+  {
+  color: #000;
+  background: #fff;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 390;
+  line-height: normal; 
+   transition: all 1030ms ease-out; 
+  }
+  .inp1:hover{
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
+      font-size: 13px;
+  font-style: normal;
+  font-weight: 390;
+  line-height: normal;
+  transition: all 170ms ease-out; 
+  
+  }
+  
+.min-input::-webkit-inner-spin-button,
+.max-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
-.max-output::placeholder{
-  color: #FFF;
-font-family: Poppins;
-font-size: 9px;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-}
 .dash{
   width: 5px;
   height: 2px;
   background: #FFF;
   position: absolute;
-  left: 175px;
+  left: 173px;
   top: 12px;
 }
 .tick-box{
-  position: absolute;top: 40px;
-  left: 162px;
+  position: absolute;
+  top: 40px;
+  left: 161px;
   top: 37px;
 
 }
-.tick-box img{
-width: 26px;
-height: 26px;
-justify-content: center;
-align-items: center;
 
+.clear-btn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
 
+}
+.clear-btn img{
+  height: 17px;
+  width: 17px;
+}
+.tick-box{
+  position: absolute;
+  left: 164px;
+  width: 26px;
+  height: 26px;
+  background-image: url("tick\ mark\ 1\ \(4\).png");
+  background-size: cover;
+  transition: background-image 0.3s ease-in-out; 
+}
+.tick-box:hover {
+  background-image: url("tick\ mark-hover.png");
 }
